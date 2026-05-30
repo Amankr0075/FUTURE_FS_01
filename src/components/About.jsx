@@ -102,7 +102,7 @@ const About = () => {
                 <span>✉️</span> Let's Connect
               </button>
               <a
-                href="/resume.html"
+                href={`${import.meta.env.BASE_URL}resume.html`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-secondary"

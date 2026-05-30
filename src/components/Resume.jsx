@@ -76,7 +76,7 @@ const Resume = () => {
             </div>
 
             <a
-              href="/resume.html" target="_blank" rel="noopener noreferrer"
+              href={`${import.meta.env.BASE_URL}resume.html`} target="_blank" rel="noopener noreferrer"
               className="resume-download-btn"
               id="resume-download-main"
               aria-label="Download Aman Kumar's resume"

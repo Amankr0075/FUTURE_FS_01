@@ -116,7 +116,7 @@ const Hero = () => {
                 <span>🚀</span> View Projects
               </button>
               <a
-                href="/resume.html" target="_blank" rel="noopener noreferrer"
+                href={`${import.meta.env.BASE_URL}resume.html`} target="_blank" rel="noopener noreferrer"
                 className="btn btn-secondary"
                 id="hero-download-resume"
               >

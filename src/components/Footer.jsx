@@ -84,7 +84,7 @@ const Footer = () => {
               ))}
               <li>
                 <a
-                  href="/resume.html" target="_blank" rel="noopener noreferrer"
+                  href={`${import.meta.env.BASE_URL}resume.html`} target="_blank" rel="noopener noreferrer"
                   className="footer-link"
                   aria-label="Download resume"
                 > Resume
