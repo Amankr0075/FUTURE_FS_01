@@ -1,151 +1,156 @@
-<<<<<<< HEAD
-# 🚀 Aman Kumar - Personal Portfolio Website
+# Aman Kumar - Professional Portfolio Website
 
-![Portfolio Preview](./public/preview.png)
+## Overview
 
-A **modern, professional, fully responsive** personal portfolio website built with **React.js + Vite**, featuring:
-- 🌙 Dark/Light mode toggle
-- ⌨️ Typing text animation
-- ✨ Smooth scroll animations
-- 📱 Fully mobile responsive
-- ⚡ Fast & SEO optimized
-- 🎨 Glassmorphism design
+This is my personal professional portfolio website developed as part of the Future Interns Full Stack Web Development Internship (Task 1).
 
-## 🛠️ Tech Stack
+The website showcases my skills, projects, education, resume, and contact information in a modern and responsive interface. It serves as a digital portfolio for recruiters, hiring managers, and potential clients.
 
-| Category | Technology |
-|----------|------------|
-| **Framework** | React.js 19 + Vite 8 |
-| **Styling** | Vanilla CSS with CSS Custom Properties |
-| **Animations** | CSS Animations + Intersection Observer |
-| **Icons** | Emojis (no external dependencies) |
-| **Contact** | Web3Forms API |
-| **Deployment** | GitHub Pages |
+## Features
 
-## 📁 Project Structure
+* Responsive design for desktop, tablet, and mobile devices
+* Modern UI with smooth animations
+* About Me section
+* Skills showcase
+* Projects portfolio
+* Resume download/view functionality
+* Contact form with EmailJS integration
+* Social media and professional profile links
+* GitHub Pages deployment
 
-```
-Portfolio_/
-├── public/
-│   ├── favicon.svg
-│   └── resume.pdf          ← Add your resume here
-├── src/
-│   ├── components/
-│   │   ├── Navbar.jsx
-│   │   ├── Hero.jsx
-│   │   ├── About.jsx
-│   │   ├── Skills.jsx
-│   │   ├── Projects.jsx
-│   │   ├── Education.jsx
-│   │   ├── Resume.jsx
-│   │   ├── Certifications.jsx
-│   │   ├── Achievements.jsx
-│   │   ├── Contact.jsx
-│   │   ├── Footer.jsx
-│   │   ├── ScrollToTop.jsx
-│   │   └── LoadingScreen.jsx
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── index.html
-├── vite.config.js
-└── package.json
-```
+## Tech Stack
 
-## 🚀 Getting Started
+### Frontend
 
-### Prerequisites
-- Node.js 18+ and npm
+* React.js
+* Vite
+* HTML5
+* CSS3
+* JavaScript (ES6+)
 
-### Installation
+### Libraries
+
+* Framer Motion
+* React Icons
+* React Router DOM
+* EmailJS
+
+### Tools
+
+* Git
+* GitHub
+* VS Code
+* Figma
+
+## Projects Featured
+
+### GroupSathi
+
+A collaborative group management platform that helps users create and manage groups, schedule activities, and improve team communication.
+
+### E-Commerce Website
+
+A full-stack e-commerce platform built using Flask and MongoDB with product browsing, authentication, cart, and order management features.
+
+### BookHive Library
+
+A modern digital library interface designed using Figma focusing on usability and user experience.
+
+## Setup Instructions
+
+### Clone Repository
 
 ```bash
-# Clone the repository
-git clone https://github.com/amankumar/portfolio.git
-cd portfolio
+git clone https://github.com/Amankr0075/FUTURE_FS_01.git
+cd FUTURE_FS_01
+```
 
-# Install dependencies
+### Install Dependencies
+
+```bash
 npm install
+```
 
-# Start development server
+### Run Development Server
+
+```bash
 npm run dev
 ```
 
-The app will open at `http://localhost:3000`
+The application will run on:
 
-## ⚙️ Customization
-
-### 1. Personal Information
-Update your details in each component under `src/components/`:
-- `Hero.jsx` — Name, title, description
-- `About.jsx` — Bio and highlights
-- `Projects.jsx` — Add/edit projects
-- `Contact.jsx` — Email, LinkedIn, GitHub links
-- `Footer.jsx` — Social media links
-
-### 2. Contact Form (Web3Forms)
-1. Go to [web3forms.com](https://web3forms.com)
-2. Create a free account and get your Access Key
-3. In `Contact.jsx`, replace `YOUR_WEB3FORMS_ACCESS_KEY` with your key:
-   ```js
-   const WEB3FORMS_KEY = 'your-actual-access-key';
-   ```
-
-### 3. Resume
-Place your resume PDF at `public/resume.pdf` — the Download button will automatically work.
-
-### 4. Colors & Theme
-The entire design system is in `src/index.css` under the `:root` CSS variables. Easily change:
-- `--accent-primary` — Main purple color
-- `--accent-secondary` — Pink accent
-- `--gradient-primary` — Primary gradient
-
-## 📦 Build & Deploy
+```text
+http://localhost:3000
+```
 
 ### Build for Production
+
 ```bash
 npm run build
 ```
 
-### Deploy to GitHub Pages
+### Preview Production Build
+
 ```bash
-# Install gh-pages package
-npm install --save-dev gh-pages
+npm run preview
+```
 
-# Update vite.config.js base to your repo name
-# base: '/your-repo-name/'
+## Deployment Steps
 
-# Deploy
+### GitHub Pages Deployment
+
+1. Update Vite configuration:
+
+```js
+base: '/FUTURE_FS_01/'
+```
+
+2. Update package.json:
+
+```json
+"homepage": "https://amankr0075.github.io/FUTURE_FS_01"
+```
+
+3. Install GitHub Pages:
+
+```bash
+npm install gh-pages --save-dev
+```
+
+4. Deploy:
+
+```bash
 npm run deploy
 ```
 
-### Deploy to Vercel/Netlify
-Simply connect your GitHub repository to Vercel or Netlify for automatic deployments.
+5. Configure GitHub Pages:
 
-## 🎨 Sections
+   * Repository Settings → Pages
+   * Source: Deploy from a branch
+   * Branch: gh-pages
+   * Folder: /(root)
 
-| Section | Description |
-|---------|-------------|
-| **Hero** | Animated greeting with typing effect and stats |
-| **About** | Personal intro with highlights |
-| **Skills** | Categorized tech skills with proficiency bars |
-| **Projects** | Project cards with GitHub & demo links |
-| **Education** | Timeline layout |
-| **Resume** | Download section with highlights |
-| **Certifications** | Certificate cards with status |
-| **Achievements** | Accomplishment cards |
-| **Contact** | Contact form + social links |
+6. Access the live website:
 
-## 📧 Contact
+```text
+https://amankr0075.github.io/FUTURE_FS_01/
+```
 
-**Aman Kumar**  
-📧 amankumar@email.com  
-💼 [LinkedIn](https://linkedin.com/in/amankumar)  
-🐙 [GitHub](https://github.com/amankumar)
+## Contact
 
----
+Aman Kumar
 
-> *Built with ❤️ by Aman Kumar — © 2026*
-=======
-# FUTURE_FS_01
->>>>>>> 7c7f09a5a547891572f13e5ac75393484999ea64
+Email: [amankumar3432k@gmail.com](mailto:amankumar3432k@gmail.com)
+
+LinkedIn:
+https://www.linkedin.com/in/amanxelon
+
+GitHub:
+https://github.com/Amankr0075
+
+Portfolio:
+https://amankr0075.github.io/FUTURE_FS_01/
+
+## License
+
+This project is developed for educational, professional, and portfolio purposes.
