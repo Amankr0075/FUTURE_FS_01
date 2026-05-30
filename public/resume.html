@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aman Kumar — Resume</title>
+  <style>
+    /* ─── PRINT + SCREEN RESET ─── */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&display=swap');
+
+    body {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11pt;
+      color: #111;
+      background: #fff;
+      line-height: 1.4;
+    }
+
+    /* ─── PRINT BUTTON (hidden when printing) ─── */
+    .print-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #2c2c2c;
+      color: #fff;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      z-index: 999;
+      gap: 12px;
+    }
+
+    .print-bar span {
+      opacity: 0.8;
+    }
+
+    .print-btn {
+      background: #6c63ff;
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: Arial, sans-serif;
+    }
+
+    .print-btn:hover {
+      background: #8b85ff;
+    }
+
+    /* ─── PAGE ─── */
+    .page {
+      max-width: 780px;
+      margin: 60px auto 40px;
+      padding: 36px 42px;
+      background: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .header-name {
+      font-size: 26pt;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #000;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .header-tagline {
+      font-style: italic;
+      font-size: 10.5pt;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .header-contact {
+      font-size: 10pt;
+      color: #333;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 16px;
+      align-items: center;
+    }
+
+    .header-contact a {
+      color: #0000EE;
+      text-decoration: none;
+    }
+
+    .header-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .header-location {
+      text-align: center;
+      font-size: 10pt;
+      color: #444;
+      margin-top: 4px;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      border: none;
+      border-top: 1.5px solid #000;
+      margin: 6px 0 6px;
+    }
+
+    /* ─── SECTION ─── */
+    .section {
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: 11.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #000;
+      margin-bottom: 4px;
+    }
+
+    /* ─── OBJECTIVE ─── */
+    .objective p {
+      font-size: 10.5pt;
+      color: #222;
+      line-height: 1.55;
+      text-align: justify;
+    }
+
+    /* ─── EDUCATION ─── */
+    .edu-item {
+      margin-bottom: 7px;
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .edu-school {
+      font-weight: bold;
+      font-size: 10.5pt;
+    }
+
+    .edu-date {
+      font-size: 10pt;
+      color: #444;
+      white-space: nowrap;
+    }
+
+    .edu-degree {
+      font-size: 10.5pt;
+      color: #222;
+      margin-top: 1px;
+    }
+
+    .edu-note {
+      font-size: 10pt;
+      color: #555;
+      font-style: italic;
+      margin-top: 1px;
+    }
+
+    /* ─── SKILLS ─── */
+    .skill-row {
+      font-size: 10.5pt;
+      margin-bottom: 3px;
+    }
+
+    .skill-label {
+      font-weight: bold;
+    }
+
+    /* ─── PROJECTS ─── */
+    .project-item {
+      margin-bottom: 9px;
+    }
+
+    .project-title {
+      font-weight: bold;
+      font-size: 10.5pt;
+    }
+
+    .project-title a {
+      color: #0000EE;
+      text-decoration: none;
+    }
+
+    .project-title a:hover {
+      text-decoration: underline;
+    }
+
+    .project-stack {
+      font-style: italic;
+      font-size: 10pt;
+      color: #444;
+    }
+
+    .project-bullets {
+      margin-top: 3px;
+      padding-left: 18px;
+    }
+
+    .project-bullets li {
+      font-size: 10.5pt;
+      color: #222;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+
+    /* ─── CERTS ─── */
+    .cert-list {
+      padding-left: 18px;
+    }
+
+    .cert-list li {
+      font-size: 10.5pt;
+      margin-bottom: 3px;
+      line-height: 1.4;
+    }
+
+    .cert-list li span {
+      color: #555;
+      font-style: italic;
+    }
+
+    /* ─── ACHIEVEMENTS ─── */
+    .ach-item {
+      margin-bottom: 5px;
+    }
+
+    .ach-title {
+      font-weight: bold;
+      font-size: 10.5pt;
+    }
+
+    .ach-desc {
+      font-size: 10.5pt;
+      color: #222;
+    }
+
+    /* ─── MISC ─── */
+    .misc-row {
+      font-size: 10.5pt;
+      margin-bottom: 3px;
+    }
+
+    .misc-label {
+      font-weight: bold;
+    }
+
+    /* ─── PRINT STYLES ─── */
+    @media print {
+      .print-bar {
+        display: none !important;
+      }
+
+      .page {
+        margin: 0;
+        padding: 28px 36px;
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+      }
+
+      body {
+        font-size: 10.5pt;
+      }
+
+      @page {
+        size: A4;
+        margin: 10mm 12mm;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Print Bar -->
+  <div class="print-bar">
+    <span>📄 Aman Kumar — Resume &nbsp;|&nbsp; Press <strong>Ctrl+P</strong> → <strong>Save as PDF</strong> to
+      download</span>
+    <button class="print-btn" onclick="window.print()">
+      ⬇️ Download / Print PDF
+    </button>
+  </div>
+
+  <!-- Resume Page -->
+  <div class="page">
+
+    <!-- ═══ HEADER ═══ -->
+    <div class="header">
+      <div class="header-name">AMAN KUMAR</div>
+      <div class="header-contact">
+        <span>📞 +91 9693435471</span>
+        &nbsp;|&nbsp;
+        <span>✉️ amankumar3432k@gmail.com</span>
+        &nbsp;|&nbsp;
+        <a href="https://github.com/Amankr0075" target="_blank">GitHub ↗</a>
+        &nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/in/amanxelon" target="_blank">LinkedIn ↗</a>
+        &nbsp;|&nbsp;
+        <a href="https://leetcode.com/u/amankr0075/" target="_blank">LeetCode ↗</a>
+        &nbsp;|&nbsp;
+        <a href="https://amankr0075.github.io/amanportfolio/" target="_blank">Portfolio ↗</a>
+      </div>
+      <div class="header-location">Vadodara, Gujarat – 391760, India</div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- ═══ OBJECTIVE ═══ -->
+    <div class="section objective">
+      <div class="section-title">Objective</div>
+      <hr class="divider" />
+      <p>
+        Motivated and curious 1st-year B.Tech CSE student with a strong foundation in Python, web
+        development, Flask, Django, MongoDB, and JavaScript, seeking a Full Stack Development internship
+        to apply practical skills and contribute to real-world projects. I am deeply passionate about
+        continuously gaining new skills and believe that hands-on experience in live, production-grade
+        environments is the best way to grow. I bring strong analytical thinking, teamwork, and
+        communication skills to every challenge.
+      </p>
+    </div>
+
+    <!-- ═══ EDUCATION ═══ -->
+    <div class="section">
+      <div class="section-title">Education</div>
+      <hr class="divider" />
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-school">Parul University — Vadodara, Gujarat</span>
+          <span class="edu-date">2024 – 2028</span>
+        </div>
+        <div class="edu-degree">Bachelor of Technology (B.Tech) in Computer Science &amp; Engineering</div>
+        <div class="edu-note">Current: 3rd Year &nbsp;|&nbsp; Expected Graduation: 2028</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-school">Holy Cross School — CBSE Board</span>
+          <span class="edu-date">2024</span>
+        </div>
+        <div class="edu-degree">Class XII — Science Stream (Physics, Chemistry, Mathematics)</div>
+      </div>
+
+      <div class="edu-item">
+        <div class="edu-header">
+          <span class="edu-school">Agrasen DAV Public School — CBSE Board</span>
+          <span class="edu-date">2022</span>
+        </div>
+        <div class="edu-degree">Class X — All Subjects</div>
+      </div>
+    </div>
+
+    <!-- ═══ TECHNICAL SKILLS ═══ -->
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <hr class="divider" />
+
+      <div class="skill-row">
+        <span class="skill-label">Programming Languages:</span>
+        Python, Java, C, JavaScript, HTML5, CSS3
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Frameworks &amp; Libraries:</span>
+        Flask, Django, React.js, REST APIs, Node.js (Learning)
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Databases:</span>
+        MongoDB, MySQL, DBMS
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">DSA &amp; Core CS:</span>
+        Data Structures using C, DSA with Java, Computer Networks, Operating Systems, OOP
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Tools &amp; Platforms:</span>
+        Git, GitHub, VS Code, Figma, Postman
+      </div>
+    </div>
+
+    <!-- ═══ PROJECTS ═══ -->
+    <div class="section">
+      <div class="section-title">Projects</div>
+      <hr class="divider" />
+
+      <div class="project-item">
+        <div class="project-title">
+          GroupSathi — Collaborative Group Management Platform &nbsp;
+          <span class="project-stack">| Flask · MongoDB · HTML · CSS · JavaScript</span>
+          &nbsp;
+          <a href="https://groupsathi.duckdns.org/" target="_blank">[Live ↗]</a>
+          <a href="https://github.com/Amankr0075/GroupSathi" target="_blank" style="margin-left:6px;">[GitHub ↗]</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Developed a full-stack collaborative platform enabling users to create and manage groups, schedule
+            activities, and improve team communication.</li>
+          <li>Implemented RESTful APIs using Flask with MongoDB for efficient data storage and retrieval.</li>
+          <li>Designed a responsive UI ensuring seamless experience across desktop and mobile devices.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-title">
+          E-Commerce Website — Online Shopping Platform &nbsp;
+          <span class="project-stack">| Flask · MongoDB · HTML · CSS · JavaScript</span>
+          &nbsp;
+          <a href="https://github.com/Amankr0075/flask_ecommerce" target="_blank">[GitHub ↗]</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Built a full-featured e-commerce application with product browsing, user authentication, shopping cart,
+            and order management.</li>
+          <li>Implemented secure user sessions and database-backed product catalog using Flask and MongoDB.</li>
+          <li>Designed intuitive UI/UX flow for product discovery, checkout, and order tracking.</li>
+        </ul>
+      </div>
+
+      <div class="project-item">
+        <div class="project-title">
+          Personal Portfolio Website &nbsp;
+          <span class="project-stack">| React.js · Vite · CSS · JavaScript</span>
+          &nbsp;
+          <a href="https://amankr0075.github.io/amanportfolio/" target="_blank">[Live ↗]</a>
+          <a href="https://github.com/Amankr0075" target="_blank" style="margin-left:6px;">[GitHub ↗]</a>
+        </div>
+        <ul class="project-bullets">
+          <li>Designed and developed a modern portfolio website with dark/light mode, typing animations, scroll-reveal
+            effects, and a working contact form.</li>
+          <li>Built with React.js (Vite) following component-based architecture with fully responsive layout.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ═══ CERTIFICATIONS ═══ -->
+    <div class="section">
+      <div class="section-title">Certifications &amp; Courses</div>
+      <hr class="divider" />
+      <ul class="cert-list">
+        <li>Design of Data Structures using C &nbsp;<span>— CodeTantra · Parul University, Dec 2025</span></li>
+        <li>Database Management System (DBMS) &nbsp;<span>— CodeTantra · Parul University, Dec 2025</span></li>
+        <li>Object Oriented Programming through Java &nbsp;<span>— CodeTantra · Parul University, Dec 2025</span></li>
+        <li>Operating Systems Basics &nbsp;<span>— Cisco Networking Academy · Parul University, Jul 2025</span></li>
+        <li>Network Addressing &amp; Basic Troubleshooting &nbsp;<span>— Cisco Networking Academy · Parul University,
+            Dec 2025</span></li>
+        <li>Computer Networks and Internet Protocol &nbsp;<span>— NPTEL · IIT Kharagpur (Swayam), Jan–Apr 2026</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ═══ ACHIEVEMENTS ═══ -->
+    <div class="section">
+      <div class="section-title">Achievements &amp; Experience</div>
+      <hr class="divider" />
+
+      <div class="ach-item">
+        <span class="ach-title">Full Stack Web Development Intern — Future Interns &nbsp;</span>
+        <span class="ach-desc">Built real-world web features using Python, Flask, MongoDB, and collaborated with
+          cross-functional development teams.</span>
+      </div>
+
+      <div class="ach-item">
+        <span class="ach-title">Open Source Contributor — </span>
+        <span class="ach-desc">Actively maintaining public repositories on GitHub (<a
+            href="https://github.com/Amankr0075" target="_blank">github.com/Amankr0075</a>), contributing to
+          collaborative workflows and version control best practices.</span>
+      </div>
+
+      <div class="ach-item">
+        <span class="ach-title">Active LeetCode Practitioner — </span>
+        <span class="ach-desc">Regularly solving DSA problems to strengthen algorithmic thinking and problem-solving
+          skills (<a href="https://leetcode.com/u/amankr0075/" target="_blank">leetcode.com/u/amankr0075</a>).</span>
+      </div>
+    </div>
+
+
+
+    <!-- ═══ LANGUAGES ═══ -->
+    <div class="section">
+      <div class="section-title">Languages</div>
+      <hr class="divider" />
+      <div class="misc-row">
+        Hindi <span style="font-style:italic;color:#555;">(Native)</span>
+        &nbsp;·&nbsp;
+        English <span style="font-style:italic;color:#555;">(Professional Working Proficiency)</span>
+      </div>
+    </div>
+
+  </div><!-- /page -->
+
+</body>
+
+</html>
