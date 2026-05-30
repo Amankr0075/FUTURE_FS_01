@@ -52,10 +52,6 @@ A collaborative group management platform that helps users create and manage gro
 
 A full-stack e-commerce platform built using Flask and MongoDB with product browsing, authentication, cart, and order management features.
 
-### BookHive Library
-
-A modern digital library interface designed using Figma focusing on usability and user experience.
-
 ## Setup Instructions
 
 ### Clone Repository
