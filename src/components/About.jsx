@@ -26,7 +26,7 @@ const About = () => {
               {/* Main photo */}
               <div className="about-photo-circle">
                 <img
-                  src="/aman.jpg"
+                  src={`${import.meta.env.BASE_URL}aman.jpg`}
                   alt="Aman Kumar — Full Stack Developer"
                   style={{
                     width: '100%',

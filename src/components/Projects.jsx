@@ -5,7 +5,7 @@ const projects = [
     description:
       'A professional-grade collaborative platform designed to streamline Self Help Groups and community microfinance. Features group management, activity scheduling, member coordination, financial tracking, and real-time dashboards.',
     tech: ['HTML', 'CSS', 'JavaScript', 'Flask', 'MongoDB'],
-    image: '/project-groupsathi.png',
+    image: `${import.meta.env.BASE_URL}project-groupsathi.png`,
     github: 'https://github.com/Amankr0075/GroupSathi',
     demo: 'https://groupsathi.duckdns.org/',
     demoLabel: 'Live Demo',
@@ -19,7 +19,7 @@ const projects = [
     description:
       'A full-featured online shopping platform named AmanCart with product browsing, search, user authentication, shopping cart, wishlist, order management, and address management. Built with Flask and MongoDB.',
     tech: ['Flask', 'MongoDB', 'HTML', 'CSS', 'JavaScript'],
-    image: '/project-ecommerce.jpg',
+    image: `${import.meta.env.BASE_URL}project-ecommerce.jpg`,
     github: 'https://github.com/Amankr0075/flask_ecommerce',
     demo: 'https://drive.google.com/file/d/181-0byVGISNvtXj6IdSMy-mzonOgqT5C/view?usp=sharing',
     demoLabel: 'View Demo Video',
@@ -34,9 +34,9 @@ const projects = [
     description:
       'A modern, animated personal portfolio website featuring dark/light theme toggle, typing text effects, scroll-reveal animations, a working contact form, and all project/skills showcase. Built with React.js + Vite.',
     tech: ['React.js', 'CSS', 'JavaScript', 'Vite'],
-    image: '/project-portfolio.png',
-    github: 'https://github.com/Amankr0075',
-    demo: 'https://amankr0075.github.io/amanportfolio/',
+    image: `${import.meta.env.BASE_URL}project-portfolio.png`,
+    github: 'https://github.com/Amankr0075/FUTURE_FS_01',
+    demo: 'https://amankr0075.github.io/FUTURE_FS_01/',
     demoLabel: 'Live Demo',
     badge: '🟢 Live',
     badgeColor: 'rgba(67,233,123,0.15)',

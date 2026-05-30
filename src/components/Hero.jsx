@@ -158,7 +158,7 @@ const Hero = () => {
               <div className="hero-avatar-ring" />
               <div className="hero-avatar" style={{ padding: 0, overflow: 'hidden', background: 'transparent' }}>
                 <img
-                  src="/aman.jpg"
+                  src={`${import.meta.env.BASE_URL}aman.jpg`}
                   alt="Aman Kumar"
                   style={{
                     width: '100%',
