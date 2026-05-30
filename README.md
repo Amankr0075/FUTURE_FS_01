@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Aman Kumar - Personal Portfolio Website
 
 ![Portfolio Preview](./public/preview.png)
@@ -145,3 +146,6 @@ Simply connect your GitHub repository to Vercel or Netlify for automatic deploym
 ---
 
 > *Built with ❤️ by Aman Kumar — © 2026*
+=======
+# FUTURE_FS_01
+>>>>>>> 7c7f09a5a547891572f13e5ac75393484999ea64
