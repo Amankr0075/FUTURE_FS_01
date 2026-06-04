@@ -42,6 +42,35 @@ const projects = [
     badgeColor: 'rgba(67,233,123,0.15)',
     badgeText: '#43e97b',
   },
+  {
+    id: 4,
+    name: 'LeadFlow CRM — Smart Lead Management',
+    description:
+      'A full-stack CRM platform built for managing leads end-to-end. Features a real-time dashboard with lead analytics, conversion rate tracking, lead status pipeline, monthly growth charts, and role-based user management. Built with React.js and a modern SaaS UI.',
+    tech: ['React.js', 'Vite', 'CSS', 'JavaScript', 'MongoDB'],
+    image: `${import.meta.env.BASE_URL}project-leadflow-crm.png`,
+    github: 'https://github.com/Amankr0075/FUTURE_FS_02',
+    demo: 'https://www.linkedin.com/posts/amanxelon_leadflowcrm-futureinterns-fullstackdeveloper-activity-7467945854788632576-tz4O?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEPGeXsB-1pqYLG-Zo5O4FELLUfK8XoLv7M',
+    demoLabel: 'View on LinkedIn',
+    badge: '🔴 Not Deployed',
+    badgeColor: 'rgba(255,101,132,0.15)',
+    badgeText: '#ff6584',
+    note: 'This project is not deployed live. Watch the demo walkthrough on LinkedIn.',
+  },
+  {
+    id: 5,
+    name: 'Royal Spice — Restaurant Website',
+    description:
+      'A premium Indian restaurant website with an award-winning fine dining theme. Features an animated hero section, interactive menu, gallery, table reservation system, and smooth scroll navigation. Built with pure HTML, CSS & JavaScript and deployed live.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    image: `${import.meta.env.BASE_URL}project-royal-spice.png`,
+    github: 'https://github.com/Amankr0075/FUTURE_FS_03',
+    demo: 'https://amankr0075.github.io/FUTURE_FS_03/',
+    demoLabel: 'Live Demo',
+    badge: '🟢 Live',
+    badgeColor: 'rgba(67,233,123,0.15)',
+    badgeText: '#43e97b',
+  },
 ];
 
 const Projects = () => {
@@ -161,7 +190,7 @@ const Projects = () => {
                     id={`project-${project.id}-demo`}
                     aria-label={`${project.demoLabel} of ${project.name}`}
                   >
-                    <span>{project.demoLabel.includes('Video') ? '🎬' : '🚀'}</span> {project.demoLabel}
+                    <span>{project.demoLabel.includes('Video') ? '🎬' : project.demoLabel.includes('LinkedIn') ? '💼' : '🚀'}</span> {project.demoLabel}
                   </a>
                 </div>
               </div>
