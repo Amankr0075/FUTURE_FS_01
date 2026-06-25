@@ -4,7 +4,7 @@ const projects = [
     name: 'GroupSathi',
     description:
       'A professional-grade collaborative platform designed to streamline Self Help Groups and community microfinance. Features group management, activity scheduling, member coordination, financial tracking, and real-time dashboards.',
-    tech: ['HTML', 'CSS', 'JavaScript', 'Flask', 'MongoDB'],
+    tech: ['HTML', 'CSS', 'JavaScript', 'Django', 'MongoDB'],
     image: `${import.meta.env.BASE_URL}project-groupsathi.png`,
     github: 'https://github.com/Amankr0075/GroupSathi',
     demo: 'https://groupsathi.duckdns.org/',

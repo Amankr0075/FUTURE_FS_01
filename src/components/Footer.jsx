@@ -27,7 +27,7 @@ const Footer = () => {
           <div className="footer-brand">
             <div className="footer-logo">&lt;AK /&gt;</div>
             <p className="footer-tagline">
-              Full Stack Web Developer & Computer Science student at Parul University.
+              Full Stack Web Developer & 3rd year Computer Science student at Parul University.
               Creating AI-powered solutions that solve real-world problems.
             </p>
             <div className="footer-social" role="list" aria-label="Social media links">

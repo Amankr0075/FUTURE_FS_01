@@ -15,7 +15,7 @@ const About = () => {
           <span className="section-tag">// about.me</span>
           <h2 className="section-title">Who I <span>Am</span></h2>
           <p className="section-subtitle">
-            A passionate Computer Science student on a mission to build impactful web experiences.
+            A passionate 3rd year Computer Science student on a mission to build impactful web experiences.
           </p>
         </div>
 
@@ -66,7 +66,7 @@ const About = () => {
             <p className="about-text">
               Hello! I'm{' '}
               <strong style={{ color: 'var(--accent-primary)' }}>Aman Kumar</strong>, a dedicated
-              Computer Science Engineering student at{' '}
+              3rd year Computer Science Engineering student at{' '}
               <strong>Parul University, Vadodara</strong> with a burning passion for Full Stack
               Web Development and AI-powered solutions.
             </p>

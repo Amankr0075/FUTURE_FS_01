@@ -7,7 +7,7 @@ const typingTexts = [
   'React.js Enthusiast',
   'AI Enthusiast',
   'Problem Solver',
-  'CS Engineering Student',
+  '3rd Year CS Engineering Student',
 ];
 
 const TYPING_SPEED = 80;
@@ -103,7 +103,7 @@ const Hero = () => {
 
             <p className="hero-description">
               Creating AI-powered solutions. Solving real-world problems with technology.
-              Passionate Computer Science student focused on Full Stack Web Development, Python,
+              Passionate 3rd year Computer Science student focused on Full Stack Web Development, Python,
               Flask, Django, MongoDB, JavaScript, and modern web technologies.
             </p>
 
