@@ -1,6 +1,8 @@
 /* =============================================
    SKILLS SECTION — Custom Progress Bar Layout
    ============================================= */
+import Reveal from './Reveal';
+import { motion } from 'framer-motion';
 
 const skillGroups = [
   {
@@ -84,62 +86,52 @@ const techCategories = [
   },
 ];
 
-const SkillBar = ({ name, level, color, colorEnd }) => (
-  <div style={{ marginBottom: '18px' }}>
-    <div style={{
-      display: 'flex',
-      justifyContent: 'space-between',
+const SkillBar = ({ name, color }) => (
+  <motion.div
+    whileHover={{ scale: 1.05, y: -2 }}
+    style={{
+      display: 'inline-flex',
       alignItems: 'center',
-      marginBottom: '8px',
-    }}>
-      <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)' }}>
-        {name}
-      </span>
-      <span style={{
-        fontSize: '0.82rem',
-        fontWeight: 700,
-        fontFamily: 'var(--font-mono)',
-        color: color,
-      }}>
-        {level}%
-      </span>
-    </div>
-    <div style={{
-      height: '7px',
-      background: 'rgba(255,255,255,0.06)',
-      borderRadius: '4px',
-      overflow: 'hidden',
-    }}>
-      <div
-        className="skill-bar-fill"
-        style={{
-          height: '100%',
-          width: `${level}%`,
-          background: `linear-gradient(90deg, ${color}, ${colorEnd})`,
-          borderRadius: '4px',
-          boxShadow: `0 0 10px ${color}66`,
-          transition: 'width 1.2s cubic-bezier(0.4,0,0.2,1)',
-        }}
-      />
-    </div>
-  </div>
+      padding: '10px 16px',
+      margin: '0 10px 10px 0',
+      background: 'rgba(255,255,255,0.04)',
+      border: '1px solid rgba(255,255,255,0.08)',
+      borderRadius: '8px',
+      fontSize: '0.9rem',
+      fontWeight: 500,
+      color: 'var(--text-primary)',
+      cursor: 'default'
+    }}
+  >
+    <span style={{
+      display: 'inline-block',
+      width: '8px',
+      height: '8px',
+      borderRadius: '50%',
+      backgroundColor: color,
+      marginRight: '10px',
+      boxShadow: `0 0 8px ${color}88`
+    }} />
+    {name}
+  </motion.div>
 );
 
 const Skills = () => {
   return (
     <section className="section skills-section" id="skills" aria-label="Skills">
       <div className="container">
-        <div className="section-header reveal">
-          <span className="section-tag">// skills.map()</span>
-          <h2 className="section-title">My <span>Skills</span></h2>
-          <p className="section-subtitle">
-            A breakdown of my technical expertise, core subjects, and professional abilities.
-          </p>
-        </div>
+        <Reveal>
+          <div className="section-header">
+            <span className="section-tag">// skills.map()</span>
+            <h2 className="section-title">My <span>Skills</span></h2>
+            <p className="section-subtitle">
+              A breakdown of my technical expertise, core subjects, and professional abilities.
+            </p>
+          </div>
+        </Reveal>
 
         {/* ── Progress Bar Grid ── */}
         <div
-          className="reveal"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
@@ -148,19 +140,20 @@ const Skills = () => {
           }}
         >
           {skillGroups.map((group, gi) => (
-            <div
-              key={group.title}
-              className="reveal"
-              style={{
-                background: 'var(--bg-card)',
-                border: '1px solid var(--border-light)',
-                borderRadius: 'var(--border-radius)',
-                padding: '32px',
-                transitionDelay: `${gi * 0.1}s`,
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-            >
+            <Reveal key={group.title} delay={gi * 0.1}>
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="glass-card"
+                style={{
+                  background: 'var(--bg-card)',
+                  border: '1px solid var(--border-light)',
+                  borderRadius: 'var(--border-radius)',
+                  padding: '32px',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  height: '100%'
+                }}
+              >
               {/* Top accent line */}
               <div style={{
                 position: 'absolute',
@@ -204,54 +197,62 @@ const Skills = () => {
                   colorEnd={group.colorEnd}
                 />
               ))}
-            </div>
+              </motion.div>
+            </Reveal>
           ))}
         </div>
 
         {/* ── Tech Tags ── */}
-        <div className="reveal" style={{ marginBottom: '16px' }}>
-          <h3 style={{
-            textAlign: 'center',
-            marginBottom: '32px',
-            color: 'var(--text-secondary)',
-            fontSize: '1rem',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-          }}>
-            Technologies & Tools
-          </h3>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            {techCategories.map((category) => (
-              <div
-                key={category.name}
-                className={`skill-category ${category.color}`}
-                style={{ padding: '28px' }}
-              >
-                <div className="skill-category-header">
-                  <div className="skill-category-icon">{category.icon}</div>
-                  <h3 className="skill-category-name">{category.name}</h3>
+        <Reveal delay={0.2}>
+          <div style={{ marginBottom: '16px' }}>
+            <h3 style={{
+              textAlign: 'center',
+              marginBottom: '32px',
+              color: 'var(--text-secondary)',
+              fontSize: '1rem',
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.1em',
+            }}>
+              Technologies & Tools
+            </h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+              {techCategories.map((category) => (
+                <div
+                  key={category.name}
+                  className={`skill-category ${category.color}`}
+                  style={{ padding: '28px' }}
+                >
+                  <div className="skill-category-header">
+                    <div className="skill-category-icon">{category.icon}</div>
+                    <h3 className="skill-category-name">{category.name}</h3>
+                  </div>
+                  <div className="skill-tags">
+                    {category.skills.map((skill) => (
+                      <motion.div 
+                        whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
+                        className="skill-item" 
+                        key={skill.name} 
+                        title={skill.note || skill.name}
+                      >
+                        <span className="skill-emoji">{skill.emoji}</span>
+                        <span>{skill.name}</span>
+                        {skill.note && (
+                          <span style={{ fontSize: '0.7rem', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)' }}>*</span>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                  {category.skills.some(s => s.note) && (
+                    <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '12px', fontFamily: 'var(--font-mono)' }}>
+                      * Currently learning
+                    </p>
+                  )}
                 </div>
-                <div className="skill-tags">
-                  {category.skills.map((skill) => (
-                    <div className="skill-item" key={skill.name} title={skill.note || skill.name}>
-                      <span className="skill-emoji">{skill.emoji}</span>
-                      <span>{skill.name}</span>
-                      {skill.note && (
-                        <span style={{ fontSize: '0.7rem', color: 'var(--accent-primary)', fontFamily: 'var(--font-mono)' }}>*</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                {category.skills.some(s => s.note) && (
-                  <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '12px', fontFamily: 'var(--font-mono)' }}>
-                    * Currently learning
-                  </p>
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -72,143 +72,156 @@ const projects = [
   },
 ];
 
+import TiltCard from './TiltCard';
+import Reveal from './Reveal';
+import MagneticButton from './MagneticButton';
+
 const Projects = () => {
   return (
     <section className="section" id="projects" aria-label="Projects">
       <div className="container">
-        <div className="section-header reveal">
-          <span className="section-tag">// projects.filter(awesome)</span>
-          <h2 className="section-title">Featured <span>Projects</span></h2>
-          <p className="section-subtitle">
-            A showcase of projects I've built — solving real problems with modern technologies.
-          </p>
-        </div>
+        <Reveal>
+          <div className="section-header">
+            <span className="section-tag">// projects.filter(awesome)</span>
+            <h2 className="section-title">Featured <span>Projects</span></h2>
+            <p className="section-subtitle">
+              A showcase of projects I've built — solving real problems with modern technologies.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="projects-grid">
           {projects.map((project, i) => (
-            <article
-              key={project.id}
-              className="project-card reveal"
-              style={{ transitionDelay: `${i * 0.15}s` }}
-              aria-label={`Project: ${project.name}`}
-            >
-              {/* ── Project Screenshot Banner ── */}
-              <div className="project-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                <img
-                  src={project.image}
-                  alt={`${project.name} screenshot`}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'top center',
-                    transition: 'transform 0.6s ease',
-                    display: 'block',
-                  }}
-                  onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                  onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
-                />
+            <Reveal key={project.id} delay={i * 0.1}>
+              <TiltCard style={{ height: '100%' }}>
+                <article
+                  className="project-card glass-card"
+                  style={{ height: '100%', margin: 0 }}
+                  aria-label={`Project: ${project.name}`}
+                >
+                {/* ── Project Screenshot Banner ── */}
+                <div className="project-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                  <img
+                    src={project.image}
+                    alt={`${project.name} screenshot`}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'top center',
+                      transition: 'transform 0.6s ease',
+                      display: 'block',
+                    }}
+                    onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                    onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                  />
 
-                {/* Gradient overlay at bottom for readability */}
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,15,0.85) 100%)',
-                  pointerEvents: 'none',
-                }} />
-
-                {/* Deployment status badge — top left */}
-                <span style={{
-                  position: 'absolute',
-                  top: '12px',
-                  left: '12px',
-                  padding: '4px 12px',
-                  background: project.badgeColor,
-                  border: `1px solid ${project.badgeText}44`,
-                  color: project.badgeText,
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  borderRadius: '999px',
-                  backdropFilter: 'blur(8px)',
-                  letterSpacing: '0.02em',
-                }}>
-                  {project.badge}
-                </span>
-
-                {/* Project number — top right */}
-                <span className="project-number">0{project.id}</span>
-              </div>
-
-              {/* ── Project Body ── */}
-              <div className="project-body">
-                <h3 className="project-name">{project.name}</h3>
-                <p className="project-desc">{project.description}</p>
-
-                {/* Not deployed notice */}
-                {project.note && (
+                  {/* Gradient overlay at bottom for readability */}
                   <div style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '8px',
-                    padding: '10px 14px',
-                    background: 'rgba(255,101,132,0.07)',
-                    border: '1px solid rgba(255,101,132,0.25)',
-                    borderRadius: '8px',
-                    marginBottom: '12px',
-                    fontSize: '0.8rem',
-                    color: '#ff8fa3',
-                    lineHeight: 1.5,
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,15,0.85) 100%)',
+                    pointerEvents: 'none',
+                  }} />
+
+                  {/* Deployment status badge — top left */}
+                  <span style={{
+                    position: 'absolute',
+                    top: '12px',
+                    left: '12px',
+                    padding: '4px 12px',
+                    background: project.badgeColor,
+                    border: `1px solid ${project.badgeText}44`,
+                    color: project.badgeText,
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    borderRadius: '999px',
+                    backdropFilter: 'blur(8px)',
+                    letterSpacing: '0.02em',
                   }}>
-                    <span style={{ flexShrink: 0 }}>⚠️</span>
-                    <span>{project.note}</span>
+                    {project.badge}
+                  </span>
+
+                  {/* Project number — top right */}
+                  <span className="project-number">0{project.id}</span>
+                </div>
+
+                {/* ── Project Body ── */}
+                <div className="project-body">
+                  <h3 className="project-name">{project.name}</h3>
+                  <p className="project-desc">{project.description}</p>
+
+                  {/* Not deployed notice */}
+                  {project.note && (
+                    <div style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
+                      padding: '10px 14px',
+                      background: 'rgba(255,101,132,0.07)',
+                      border: '1px solid rgba(255,101,132,0.25)',
+                      borderRadius: '8px',
+                      marginBottom: '12px',
+                      fontSize: '0.8rem',
+                      color: '#ff8fa3',
+                      lineHeight: 1.5,
+                    }}>
+                      <span style={{ flexShrink: 0 }}>⚠️</span>
+                      <span>{project.note}</span>
+                    </div>
+                  )}
+
+                  <div className="project-tech">
+                    {project.tech.map((t) => (
+                      <span className="tech-badge" key={t}>{t}</span>
+                    ))}
                   </div>
-                )}
 
-                <div className="project-tech">
-                  {project.tech.map((t) => (
-                    <span className="tech-badge" key={t}>{t}</span>
-                  ))}
-                </div>
-
-                <div className="project-actions">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-secondary btn-sm"
-                    id={`project-${project.id}-github`}
-                    aria-label={`View ${project.name} on GitHub`}
-                  >
-                    <span>🐙</span> GitHub
-                  </a>
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary btn-sm"
-                    id={`project-${project.id}-demo`}
-                    aria-label={`${project.demoLabel} of ${project.name}`}
-                  >
-                    <span>{project.demoLabel.includes('Video') ? '🎬' : project.demoLabel.includes('LinkedIn') ? '💼' : '🚀'}</span> {project.demoLabel}
-                  </a>
-                </div>
-              </div>
-            </article>
+                  <div className="project-actions">
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-secondary btn-sm"
+                      id={`project-${project.id}-github`}
+                      aria-label={`View ${project.name} on GitHub`}
+                    >
+                      <span>🐙</span> GitHub
+                    </a>
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-primary btn-sm"
+                      id={`project-${project.id}-demo`}
+                      aria-label={`${project.demoLabel} of ${project.name}`}
+                    >
+                      <span>{project.demoLabel.includes('Video') ? '🎬' : project.demoLabel.includes('LinkedIn') ? '💼' : '🚀'}</span> {project.demoLabel}
+                    </a>
+                  </div>
+                  </div>
+                </article>
+              </TiltCard>
+            </Reveal>
           ))}
         </div>
 
         {/* View All GitHub CTA */}
-        <div className="reveal" style={{ textAlign: 'center', marginTop: '48px' }}>
-          <a
-            href="https://github.com/Amankr0075"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-outline"
-            id="view-all-projects"
-          >
-            <span>🐙</span> View All Projects on GitHub
-          </a>
-        </div>
+        <Reveal delay={0.2}>
+          <div style={{ textAlign: 'center', marginTop: '48px' }}>
+            <MagneticButton>
+              <a
+                href="https://github.com/Amankr0075"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+                id="view-all-projects"
+              >
+                <span>🐙</span> View All Projects on GitHub
+              </a>
+            </MagneticButton>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

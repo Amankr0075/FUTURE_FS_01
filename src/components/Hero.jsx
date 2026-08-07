@@ -1,21 +1,130 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useMotionTemplate, useMotionValue, useSpring } from 'framer-motion';
 
 const typingTexts = [
-  'Full Stack Web Developer',
-  'Python & Flask Developer',
-  'Django Developer',
-  'React.js Enthusiast',
-  'AI Enthusiast',
-  'Problem Solver',
-  '3rd Year CS Engineering Student',
+  'Full Stack Developer',
+  'Software Engineer',
+  'AI Solutions Architect'
 ];
 
 const TYPING_SPEED = 80;
 const DELETING_SPEED = 45;
-const PAUSE_AFTER_TYPE = 1800;
+const PAUSE_AFTER_TYPE = 2500;
 const PAUSE_AFTER_DELETE = 500;
 
+// Reusable animated glow button
+const GlowButton = ({ children, onClick, href, primary }) => {
+  const ref = useRef(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+    x.set(e.clientX - rect.left);
+    y.set(e.clientY - rect.top);
+  };
+
+  const Component = href ? 'a' : 'button';
+  const props = href ? { href, target: "_blank", rel: "noopener noreferrer" } : { onClick };
+
+  return (
+    <Component
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      className={`glow-btn ${primary ? 'glow-btn-primary' : 'glow-btn-secondary'}`}
+      {...props}
+    >
+      <motion.div
+        className="glow-btn-hover"
+        style={{
+          background: useMotionTemplate`radial-gradient(circle 50px at ${x}px ${y}px, rgba(255,255,255,0.2), transparent 80%)`
+        }}
+      />
+      <span className="glow-btn-content">{children}</span>
+    </Component>
+  );
+};
+
+// 3D Glass Card for the portrait
+const GlassCard = () => {
+  const ref = useRef(null);
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useMotionTemplate`${mouseYSpring}deg`;
+  const rotateY = useMotionTemplate`${mouseXSpring}deg`;
+
+  const handleMouseMove = (e) => {
+    if (!ref.current || window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = ref.current.getBoundingClientRect();
+    
+    const width = rect.width;
+    const height = rect.height;
+    
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    
+    x.set(xPct * 20); // max rotation 20deg
+    y.set(yPct * -20);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className="glass-card-container"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+    >
+      <div className="glass-card">
+        <div className="glass-card-glow" />
+        <img
+          src={`${import.meta.env.BASE_URL}aman.jpg`}
+          alt="Aman Kumar"
+          className="glass-card-image"
+        />
+        
+        {/* Floating elements inside the 3D card */}
+        <motion.div 
+          className="glass-badge badge-top"
+          style={{ transform: "translateZ(50px)" }}
+          animate={{ y: [-5, 5, -5] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <div className="badge-dot" /> Available to Work
+        </motion.div>
+        
+        <motion.div 
+          className="glass-badge badge-bottom"
+          style={{ transform: "translateZ(30px)" }}
+          animate={{ y: [5, -5, 5] }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        >
+          📍 Vadodara, India
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -54,140 +163,71 @@ const Hero = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  // Generate particles
-  const particles = Array.from({ length: 20 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    delay: `${Math.random() * 10}s`,
-    duration: `${8 + Math.random() * 12}s`,
-    size: `${1 + Math.random() * 3}px`,
-  }));
-
   return (
-    <section className="hero" id="home" aria-label="Hero section">
-      {/* Animated particles */}
-      <div className="particles" aria-hidden="true">
-        {particles.map((p) => (
-          <span
-            key={p.id}
-            className="particle"
-            style={{
-              left: p.left,
-              bottom: 0,
-              width: p.size,
-              height: p.size,
-              animationDelay: p.delay,
-              animationDuration: p.duration,
-            }}
-          />
-        ))}
-      </div>
-
-      <div className="container">
-        <div className="hero-grid">
+    <section className="hero-premium" id="home">
+      <div className="container hero-premium-container">
+        <div className="hero-premium-grid">
+          
           {/* Left Content */}
-          <div className="hero-content">
-            <div className="hero-greeting" aria-label="Status">
-              <span className="dot" aria-hidden="true" />
-              Available for Internships &amp; Opportunities
-            </div>
+          <div className="hero-premium-content">
+            <motion.div 
+              className="premium-greeting"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Building the Future of Web & AI
+            </motion.div>
 
-            <h1 className="hero-name">
-              Hi, I'm <span>Aman Kumar</span>
-            </h1>
+            <motion.h1 
+              className="premium-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Hi, I'm <br />
+              <span className="premium-gradient-text">Aman Kumar</span>
+            </motion.h1>
 
-            <div className="hero-title" aria-live="polite" aria-label="Current role">
-              <span>{displayText}</span>
-              <span className="typing-cursor" aria-hidden="true" />
-            </div>
+            <motion.div 
+              className="premium-subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              I am a <span className="premium-typing">{displayText}</span>
+              <span className="premium-cursor" />
+            </motion.div>
 
-            <p className="hero-description">
-              Creating AI-powered solutions. Solving real-world problems with technology.
-              Passionate 3rd year Computer Science student focused on Full Stack Web Development, Python,
-              Flask, Django, MongoDB, JavaScript, and modern web technologies.
-            </p>
+            <motion.p 
+              className="premium-description"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              I specialize in designing and building high-performance, scalable web applications and intelligent systems. I turn complex problems into elegant, user-centric digital experiences.
+            </motion.p>
 
-            <div className="hero-buttons">
-              <button
-                className="btn btn-primary"
-                onClick={() => scrollTo('projects')}
-                id="hero-view-projects"
-              >
-                <span>🚀</span> View Projects
-              </button>
-              <a
-                href={`${import.meta.env.BASE_URL}resume.html`} target="_blank" rel="noopener noreferrer"
-                className="btn btn-secondary"
-                id="hero-download-resume"
-              >
-                <span>📄</span> Resume
-              </a>
-              <button
-                className="btn btn-outline"
-                onClick={() => scrollTo('contact')}
-                id="hero-contact"
-              >
-                <span>✉️</span> Contact Me
-              </button>
-
-            </div>
-
-            <div className="hero-stats" aria-label="Portfolio stats">
-              <div className="stat-item">
-                <span className="stat-number">3+</span>
-                <span className="stat-label">Projects</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">10+</span>
-                <span className="stat-label">Technologies</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">6+</span>
-                <span className="stat-label">Certifications</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-number">∞</span>
-                <span className="stat-label">Passion</span>
-              </div>
-            </div>
+            <motion.div 
+              className="premium-actions"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <GlowButton primary onClick={() => scrollTo('projects')}>
+                View My Work
+              </GlowButton>
+              <GlowButton href={`${import.meta.env.BASE_URL}resume.html`}>
+                Download Resume
+              </GlowButton>
+            </motion.div>
           </div>
 
-          {/* Right Visual — Profile Photo */}
-          <div className="hero-visual" aria-hidden="true">
-            <div className="hero-avatar-container">
-              <div className="hero-avatar-ring" />
-              <div className="hero-avatar" style={{ padding: 0, overflow: 'hidden', background: 'transparent' }}>
-                <img
-                  src={`${import.meta.env.BASE_URL}aman.jpg`}
-                  alt="Aman Kumar"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center top',
-                    borderRadius: '50%',
-                    display: 'block',
-                  }}
-                />
-              </div>
-
-              <div className="hero-badge badge-1">
-                <div className="badge-icon green">✅</div>
-                <div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 500 }}>Status</div>
-                  <div>Open to Work</div>
-                </div>
-              </div>
-
-              <div className="hero-badge badge-2">
-                <div className="badge-icon blue">📍</div>
-                <div>
-                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 500 }}>Location</div>
-                  <div>Vadodara, India</div>
-                </div>
-              </div>
-            </div>
+          {/* Right Visual */}
+          <div className="hero-premium-visual">
+            <GlassCard />
           </div>
+
         </div>
       </div>
     </section>
@@ -195,5 +235,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-

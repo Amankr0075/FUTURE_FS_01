@@ -1,3 +1,6 @@
+import Reveal from './Reveal';
+import MagneticButton from './MagneticButton';
+
 const About = () => {
   const highlights = [
     { icon: '🎓', text: 'B.Tech CSE at Parul University (2024–2028)' },
@@ -11,106 +14,124 @@ const About = () => {
   return (
     <section className="section" id="about" aria-label="About me">
       <div className="container">
-        <div className="section-header reveal">
-          <span className="section-tag">// about.me</span>
-          <h2 className="section-title">Who I <span>Am</span></h2>
-          <p className="section-subtitle">
-            A passionate 3rd year Computer Science student on a mission to build impactful web experiences.
-          </p>
-        </div>
+        <Reveal>
+          <div className="section-header">
+            <span className="section-tag">// about.me</span>
+            <h2 className="section-title">Who I <span>Am</span></h2>
+            <p className="section-subtitle">
+              A passionate 3rd year Computer Science student on a mission to build impactful web experiences.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="about-grid">
           {/* ── Profile Photo Visual ── */}
-          <div className="about-image-wrapper reveal">
-            <div className="about-photo-frame">
-              {/* Main photo */}
-              <div className="about-photo-circle">
-                <img
-                  src={`${import.meta.env.BASE_URL}aman.jpg`}
-                  alt="Aman Kumar — Full Stack Developer"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center top',
-                    display: 'block',
-                  }}
-                />
-              </div>
+          <Reveal delay={0.2}>
+            <div className="about-image-wrapper">
+              <div className="about-photo-frame">
+                {/* Main photo */}
+                <div className="about-photo-circle">
+                  <img
+                    src={`${import.meta.env.BASE_URL}aman.jpg`}
+                    alt="Aman Kumar — Full Stack Developer"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                      display: 'block',
+                    }}
+                  />
+                </div>
 
-              {/* Decorative rings */}
-              <div className="about-photo-ring about-photo-ring-1" />
-              <div className="about-photo-ring about-photo-ring-2" />
+                {/* Decorative rings */}
+                <div className="about-photo-ring about-photo-ring-1" />
+                <div className="about-photo-ring about-photo-ring-2" />
 
-              {/* Floating info cards */}
-              <div className="about-info-card card-1">
-                <span className="about-info-icon">📍</span>
-                <span>Vadodara, Gujarat</span>
-              </div>
-              <div className="about-info-card card-2">
-                <span className="about-info-icon">🎓</span>
-                <span>B.Tech CSE</span>
-              </div>
+                {/* Floating info cards */}
+                <div className="about-info-card card-1">
+                  <span className="about-info-icon">📍</span>
+                  <span>Vadodara, Gujarat</span>
+                </div>
+                <div className="about-info-card card-2">
+                  <span className="about-info-icon">🎓</span>
+                  <span>B.Tech CSE</span>
+                </div>
 
-              {/* Decorative dots grid */}
-              <div className="about-dots" aria-hidden="true">
-                {Array.from({ length: 16 }, (_, i) => (
-                  <div key={i} className="about-dot" />
-                ))}
+                {/* Decorative dots grid */}
+                <div className="about-dots" aria-hidden="true">
+                  {Array.from({ length: 16 }, (_, i) => (
+                    <div key={i} className="about-dot" />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* ── Content ── */}
-          <div className="about-content reveal reveal-delay-1">
-            <p className="about-text">
-              Hello! I'm{' '}
-              <strong style={{ color: 'var(--accent-primary)' }}>Aman Kumar</strong>, a dedicated
-              3rd year Computer Science Engineering student at{' '}
-              <strong>Parul University, Vadodara</strong> with a burning passion for Full Stack
-              Web Development and AI-powered solutions.
-            </p>
-            <p className="about-text">
-              My journey started with curiosity about how websites work, and evolved into a deep
-              love for creating them. From backend APIs with{' '}
-              <strong>Python, Flask & Django</strong> to dynamic frontends with{' '}
-              <strong>React.js</strong>, and data management with{' '}
-              <strong>MongoDB & MySQL</strong> — I enjoy every layer of the stack.
-            </p>
-            <p className="about-text">
-              I'm an <strong>AI Enthusiast</strong>, a problem solver, and a creative thinker who
-              loves exploring new technologies. Whether it's a collaborative group platform like{' '}
-              <em>GroupSathi</em> or a full e-commerce system, I believe great software combines
-              technical excellence with genuine user empathy.
-            </p>
+          <div>
+            <Reveal delay={0.3}>
+              <p className="about-text">
+                Hello! I'm{' '}
+                <strong style={{ color: 'var(--accent-primary)' }}>Aman Kumar</strong>, a dedicated
+                3rd year Computer Science Engineering student at{' '}
+                <strong>Parul University, Vadodara</strong> with a burning passion for Full Stack
+                Web Development and AI-powered solutions.
+              </p>
+            </Reveal>
+            <Reveal delay={0.4}>
+              <p className="about-text">
+                My journey started with curiosity about how websites work, and evolved into a deep
+                love for creating them. From backend APIs with{' '}
+                <strong>Python, Flask & Django</strong> to dynamic frontends with{' '}
+                <strong>React.js</strong>, and data management with{' '}
+                <strong>MongoDB & MySQL</strong> — I enjoy every layer of the stack.
+              </p>
+            </Reveal>
+            <Reveal delay={0.5}>
+              <p className="about-text">
+                I'm an <strong>AI Enthusiast</strong>, a problem solver, and a creative thinker who
+                loves exploring new technologies. Whether it's a collaborative group platform like{' '}
+                <em>GroupSathi</em> or a full e-commerce system, I believe great software combines
+                technical excellence with genuine user empathy.
+              </p>
+            </Reveal>
 
-            <div className="about-highlights">
-              {highlights.map((item, i) => (
-                <div className="highlight-item" key={i}>
-                  <span className="highlight-icon">{item.icon}</span>
-                  <span className="highlight-text">{item.text}</span>
-                </div>
-              ))}
-            </div>
+            <Reveal delay={0.6}>
+              <div className="about-highlights">
+                {highlights.map((item, i) => (
+                  <div className="highlight-item" key={i}>
+                    <span className="highlight-icon">{item.icon}</span>
+                    <span className="highlight-text">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
 
-            <div style={{ display: 'flex', gap: '16px', marginTop: '24px', flexWrap: 'wrap' }}>
-              <button
-                className="btn btn-primary"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                id="about-contact-btn"
-              >
-                <span>✉️</span> Let's Connect
-              </button>
-              <a
-                href={`${import.meta.env.BASE_URL}resume.html`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-secondary"
-                id="about-resume-btn"
-              >
-                <span>📄</span> View Resume
-              </a>
-            </div>
+            <Reveal delay={0.7}>
+              <div style={{ display: 'flex', gap: '16px', marginTop: '24px', flexWrap: 'wrap' }}>
+                <MagneticButton>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                    id="about-contact-btn"
+                  >
+                    <span>✉️</span> Let's Connect
+                  </button>
+                </MagneticButton>
+                <MagneticButton>
+                  <a
+                    href={`${import.meta.env.BASE_URL}resume.html`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-secondary"
+                    id="about-resume-btn"
+                  >
+                    <span>📄</span> View Resume
+                  </a>
+                </MagneticButton>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>

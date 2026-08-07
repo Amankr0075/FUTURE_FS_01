@@ -52,6 +52,14 @@ function App() {
 
   return (
     <>
+      {/* Global Aurora Background */}
+      <div className="aurora-bg">
+        <div className="aurora-blob blob-1" />
+        <div className="aurora-blob blob-2" />
+        <div className="aurora-blob blob-3" />
+        <div className="aurora-noise" />
+      </div>
+
       <LoadingScreen loading={loading} />
       {!loading && (
         <>

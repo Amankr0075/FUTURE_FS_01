@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import Reveal from './Reveal';
+import MagneticButton from './MagneticButton';
 
 // ─────────────────────────────────────────────────────────────────
 //  HOW TO ACTIVATE (one-time, 5 minutes):
@@ -154,218 +156,225 @@ const Contact = () => {
   return (
     <section className="section contact-section" id="contact" aria-label="Contact">
       <div className="container">
-        <div className="section-header reveal">
-          <span className="section-tag">// contact.getInTouch()</span>
-          <h2 className="section-title">Let's <span>Connect</span></h2>
-          <p className="section-subtitle">
-            Have a project in mind or want to collaborate? I'd love to hear from you!
-          </p>
-        </div>
+        <Reveal>
+          <div className="section-header">
+            <span className="section-tag">// contact.getInTouch()</span>
+            <h2 className="section-title">Let's <span>Connect</span></h2>
+            <p className="section-subtitle">
+              Have a project in mind or want to collaborate? I'd love to hear from you!
+            </p>
+          </div>
+        </Reveal>
 
         <div className="contact-grid">
           {/* ── Left: Info ── */}
-          <div className="contact-info reveal">
-            <div>
-              <h3 className="contact-intro-title">
-                Ready to build <span>something great</span> together?
-              </h3>
-              <p className="contact-intro-text">
-                I'm currently open to internship opportunities, freelance projects, and
-                collaborations. Whether you have a project idea, need a developer, or just want to
-                say hi — my inbox is always open!
-              </p>
-            </div>
-
-            {contactMethods.map((method) => (
-              <a
-                key={method.label}
-                href={method.href}
-                target={method.label !== 'Email' ? '_blank' : undefined}
-                rel={method.label !== 'Email' ? 'noopener noreferrer' : undefined}
-                className="contact-method"
-                id={`contact-${method.label.toLowerCase()}`}
-                aria-label={`${method.label}: ${method.value}`}
-              >
-                <div className="contact-method-icon">{method.icon}</div>
-                <div>
-                  <div className="contact-method-label">{method.label}</div>
-                  <div className="contact-method-value">{method.value}</div>
-                </div>
-              </a>
-            ))}
-
-            {/* Availability badge */}
-            <div style={{
-              padding: '16px',
-              background: 'rgba(67,233,123,0.08)',
-              border: '1px solid rgba(67,233,123,0.2)',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-            }}>
-              <div style={{
-                width: '10px', height: '10px',
-                background: '#43e97b',
-                borderRadius: '50%',
-                boxShadow: '0 0 8px #43e97b',
-                animation: 'blink 1.5s ease infinite',
-                flexShrink: 0,
-              }} />
+          <Reveal delay={0.1}>
+            <div className="contact-info">
               <div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#43e97b' }}>
-                  Available for Work
-                </div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                  Open to internships &amp; freelance projects
+                <h3 className="contact-intro-title">
+                  Ready to build <span>something great</span> together?
+                </h3>
+                <p className="contact-intro-text">
+                  I'm currently open to internship opportunities, freelance projects, and
+                  collaborations. Whether you have a project idea, need a developer, or just want to
+                  say hi — my inbox is always open!
+                </p>
+              </div>
+
+              {contactMethods.map((method) => (
+                <MagneticButton key={method.label}>
+                  <a
+                    href={method.href}
+                    target={method.label !== 'Email' ? '_blank' : undefined}
+                    rel={method.label !== 'Email' ? 'noopener noreferrer' : undefined}
+                    className="contact-method"
+                    id={`contact-${method.label.toLowerCase()}`}
+                    aria-label={`${method.label}: ${method.value}`}
+                  >
+                    <div className="contact-method-icon">{method.icon}</div>
+                    <div>
+                      <div className="contact-method-label">{method.label}</div>
+                      <div className="contact-method-value">{method.value}</div>
+                    </div>
+                  </a>
+                </MagneticButton>
+              ))}
+
+              {/* Availability badge */}
+              <div style={{
+                padding: '16px',
+                background: 'rgba(67,233,123,0.08)',
+                border: '1px solid rgba(67,233,123,0.2)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+              }}>
+                <div style={{
+                  width: '10px', height: '10px',
+                  background: '#43e97b',
+                  borderRadius: '50%',
+                  boxShadow: '0 0 8px #43e97b',
+                  animation: 'blink 1.5s ease infinite',
+                  flexShrink: 0,
+                }} />
+                <div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#43e97b' }}>
+                    Available for Work
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                    Open to internships &amp; freelance projects
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* ── Right: Form ── */}
-          <div className="contact-form-wrapper reveal reveal-delay-2">
-            <form
-              ref={formRef}
-              className="contact-form"
-              onSubmit={handleSubmit}
-              noValidate
-              aria-label="Contact form"
-            >
-              {/* Hidden fields for EmailJS template */}
-              <input type="hidden" name="to_email" value="amankumar3432k@gmail.com" />
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label className="form-label" htmlFor="contact-name">
-                    Full Name <span style={{ color: 'var(--accent-secondary)' }}>*</span>
-                  </label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="from_name"
-                    className="form-input"
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value } })}
-                    onBlur={e => { e.target.style.borderColor = e.target.value ? 'rgba(67,233,123,0.4)' : ''; }}
-                    required
-                    autoComplete="name"
-                  />
-                </div>
-                <div className="form-group">
-                  <label className="form-label" htmlFor="contact-email">
-                    Email Address <span style={{ color: 'var(--accent-secondary)' }}>*</span>
-                  </label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="from_email"
-                    className="form-input"
-                    placeholder="your@email.com"
-                    value={formData.email}
-                    onChange={(e) => handleChange({ target: { name: 'email', value: e.target.value } })}
-                    required
-                    autoComplete="email"
-                  />
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label className="form-label" htmlFor="contact-subject">
-                  Subject
-                </label>
-                <input
-                  id="contact-subject"
-                  type="text"
-                  name="subject"
-                  className="form-input"
-                  placeholder="What's this about?"
-                  value={formData.subject}
-                  onChange={(e) => handleChange({ target: { name: 'subject', value: e.target.value } })}
-                  autoComplete="off"
-                />
-              </div>
-
-              <div className="form-group">
-                <label className="form-label" htmlFor="contact-message">
-                  Message <span style={{ color: 'var(--accent-secondary)' }}>*</span>
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  className="form-textarea"
-                  placeholder="Tell me about your project or just say hello..."
-                  value={formData.message}
-                  onChange={(e) => handleChange({ target: { name: 'message', value: e.target.value } })}
-                  required
-                  rows={6}
-                />
-              </div>
-
-              {/* Status Message */}
-              {status.message && currentStatus && (
-                <div
-                  role="alert"
-                  aria-live="polite"
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '12px',
-                    padding: '14px 18px',
-                    background: currentStatus.bg,
-                    border: `1px solid ${currentStatus.border}`,
-                    borderRadius: '10px',
-                    color: currentStatus.color,
-                    fontWeight: 600,
-                    fontSize: '0.9rem',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>{currentStatus.icon}</span>
-                  <span>{status.message}</span>
-                </div>
-              )}
-
-              {/* Submit */}
-              <button
-                type="submit"
-                className="form-submit"
-                disabled={sending}
-                id="contact-submit"
-                aria-busy={sending}
+          <Reveal delay={0.2}>
+            <div className="contact-form-wrapper">
+              <form
+                ref={formRef}
+                className="contact-form glass-card"
+                onSubmit={handleSubmit}
+                noValidate
+                aria-label="Contact form"
               >
-                {sending ? (
-                  <>
-                    <span style={{
-                      display: 'inline-block',
-                      width: '18px', height: '18px',
-                      border: '2px solid rgba(255,255,255,0.3)',
-                      borderTopColor: 'white',
-                      borderRadius: '50%',
-                      animation: 'spin 0.7s linear infinite',
-                    }} />
-                    Sending…
-                  </>
-                ) : (
-                  <>
-                    <span>🚀</span>
-                    Send Message
-                  </>
-                )}
-              </button>
+                {/* Hidden fields for EmailJS template */}
+                <input type="hidden" name="to_email" value="amankumar3432k@gmail.com" />
 
-              <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '8px' }}>
-                Or email directly:{' '}
-                <a
-                  href="mailto:amankumar3432k@gmail.com"
-                  style={{ color: 'var(--accent-primary)', fontWeight: 600 }}
+                <div className="form-row">
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="contact-name">
+                      Full Name <span style={{ color: 'var(--accent-secondary)' }}>*</span>
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="from_name"
+                      className="form-input"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={(e) => handleChange({ target: { name: 'name', value: e.target.value } })}
+                      onBlur={e => { e.target.style.borderColor = e.target.value ? 'rgba(67,233,123,0.4)' : ''; }}
+                      required
+                      autoComplete="name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="contact-email">
+                      Email Address <span style={{ color: 'var(--accent-secondary)' }}>*</span>
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="from_email"
+                      className="form-input"
+                      placeholder="your@email.com"
+                      value={formData.email}
+                      onChange={(e) => handleChange({ target: { name: 'email', value: e.target.value } })}
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label" htmlFor="contact-subject">
+                    Subject
+                  </label>
+                  <input
+                    id="contact-subject"
+                    type="text"
+                    name="subject"
+                    className="form-input"
+                    placeholder="What's this about?"
+                    value={formData.subject}
+                    onChange={(e) => handleChange({ target: { name: 'subject', value: e.target.value } })}
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label" htmlFor="contact-message">
+                    Message <span style={{ color: 'var(--accent-secondary)' }}>*</span>
+                  </label>
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    className="form-textarea"
+                    placeholder="Tell me about your project or just say hello..."
+                    value={formData.message}
+                    onChange={(e) => handleChange({ target: { name: 'message', value: e.target.value } })}
+                    required
+                    rows={6}
+                  />
+                </div>
+
+                {/* Status Message */}
+                {status.message && currentStatus && (
+                  <div
+                    role="alert"
+                    aria-live="polite"
+                    style={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '12px',
+                      padding: '14px 18px',
+                      background: currentStatus.bg,
+                      border: `1px solid ${currentStatus.border}`,
+                      borderRadius: '10px',
+                      color: currentStatus.color,
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    <span style={{ fontSize: '1.1rem', flexShrink: 0 }}>{currentStatus.icon}</span>
+                    <span>{status.message}</span>
+                  </div>
+                )}
+
+                {/* Submit */}
+                <button
+                  type="submit"
+                  className="form-submit"
+                  disabled={sending}
+                  id="contact-submit"
+                  aria-busy={sending}
                 >
-                  amankumar3432k@gmail.com
-                </a>
-              </p>
-            </form>
-          </div>
+                  {sending ? (
+                    <>
+                      <span style={{
+                        display: 'inline-block',
+                        width: '18px', height: '18px',
+                        border: '2px solid rgba(255,255,255,0.3)',
+                        borderTopColor: 'white',
+                        borderRadius: '50%',
+                        animation: 'spin 0.7s linear infinite',
+                      }} />
+                      Sending…
+                    </>
+                  ) : (
+                    <>
+                      <span>🚀</span>
+                      Send Message
+                    </>
+                  )}
+                </button>
+
+                <p style={{ textAlign: 'center', fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '8px' }}>
+                  Or email directly:{' '}
+                  <a
+                    href="mailto:amankumar3432k@gmail.com"
+                    style={{ color: 'var(--accent-primary)', fontWeight: 600 }}
+                  >
+                    amankumar3432k@gmail.com
+                  </a>
+                </p>
+              </form>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
