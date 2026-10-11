@@ -46,12 +46,15 @@ const Resume = () => {
         <div className="resume-content">
           {/* Left: Visual Card */}
           <div className="resume-visual reveal">
-            <div className="resume-icon">📋</div>
+            <div className="resume-card-label"><span /> Career snapshot</div>
+            <div className="resume-icon">⌁</div>
             <div className="resume-visual-title">Aman Kumar</div>
             <div className="resume-visual-subtitle">
               Full Stack Web Developer<br />
               B.Tech Computer Science Engineering
             </div>
+
+            <div className="resume-meta"><span>India</span><span>Open to internships</span></div>
 
             <div style={{
               display: 'flex',
@@ -62,14 +65,8 @@ const Resume = () => {
               zIndex: 1,
             }}>
               {['Python', 'Flask', 'React.js', 'MongoDB', 'JavaScript', 'Git'].map((skill) => (
-                <div key={skill} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  color: 'rgba(255,255,255,0.85)',
-                  fontSize: '0.88rem',
-                }}>
-                  <span style={{ color: '#43e97b', fontWeight: 700 }}>✓</span>
+                <div key={skill} className="resume-skill-row">
+                  <span>✓</span>
                   {skill}
                 </div>
               ))}

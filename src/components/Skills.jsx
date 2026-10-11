@@ -88,6 +88,7 @@ const techCategories = [
 
 const SkillBar = ({ name, color }) => (
   <motion.div
+    className="skill-pill"
     whileHover={{ scale: 1.05, y: -2 }}
     style={{
       display: 'inline-flex',
@@ -131,19 +132,12 @@ const Skills = () => {
         </Reveal>
 
         {/* ── Progress Bar Grid ── */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-            gap: '28px',
-            marginBottom: '60px',
-          }}
-        >
+        <div className="skill-matrix">
           {skillGroups.map((group, gi) => (
             <Reveal key={group.title} delay={gi * 0.1}>
               <motion.div
                 whileHover={{ y: -5 }}
-                className="glass-card"
+                className="glass-card skill-discipline-card"
                 style={{
                   background: 'var(--bg-card)',
                   border: '1px solid var(--border-light)',
@@ -205,18 +199,8 @@ const Skills = () => {
         {/* ── Tech Tags ── */}
         <Reveal delay={0.2}>
           <div style={{ marginBottom: '16px' }}>
-            <h3 style={{
-              textAlign: 'center',
-              marginBottom: '32px',
-              color: 'var(--text-secondary)',
-              fontSize: '1rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-            }}>
-              Technologies & Tools
-            </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+            <div className="skills-tool-heading"><span>Technology toolkit</span><i /></div>
+            <div className="skills-tool-grid">
               {techCategories.map((category) => (
                 <div
                   key={category.name}

@@ -97,28 +97,11 @@ const GlassCard = () => {
     >
       <div className="glass-card">
         <div className="glass-card-glow" />
-        <img
-          src={`${import.meta.env.BASE_URL}aman.jpg`}
-          alt="Aman Kumar"
-          className="glass-card-image"
-        />
-        
-        {/* Floating elements inside the 3D card */}
-        <motion.div 
-          className="glass-badge badge-top"
-          style={{ transform: "translateZ(50px)" }}
-          animate={{ y: [-5, 5, -5] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        >
+        <img src={`${import.meta.env.BASE_URL}aman.jpg`} alt="Aman Kumar" className="glass-card-image" />
+        <motion.div className="glass-badge badge-top" style={{ transform: "translateZ(50px)" }} animate={{ y: [-5, 5, -5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
           <div className="badge-dot" /> Available to Work
         </motion.div>
-        
-        <motion.div 
-          className="glass-badge badge-bottom"
-          style={{ transform: "translateZ(30px)" }}
-          animate={{ y: [5, -5, 5] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        >
+        <motion.div className="glass-badge badge-bottom" style={{ transform: "translateZ(30px)" }} animate={{ y: [5, -5, 5] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
           📍 Vadodara, India
         </motion.div>
       </div>

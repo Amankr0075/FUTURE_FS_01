@@ -103,6 +103,14 @@ const Certifications = () => {
           </div>
         </Reveal>
 
+        <Reveal delay={0.1}>
+          <div className="certifications-summary" aria-label="Certification summary">
+            <span><strong>07</strong> verified credentials</span>
+            <i />
+            <span>Cloud · Networks · Data · Programming</span>
+          </div>
+        </Reveal>
+
         <div className="certs-grid">
           {certifications.map((cert, i) => {
             const ic = issuerColors[cert.badge] || issuerColors.NPTEL;
@@ -168,7 +176,10 @@ const Certifications = () => {
                   <div className="cert-date" style={{ marginBottom: '16px' }}>📅 {cert.date}</div>
 
                   {/* Status */}
-                  <span className="cert-status completed" style={{ marginTop: 'auto' }}>✅ Certified</span>
+                  <div className="cert-proof">
+                    <span className="cert-status completed">✓ Certified</span>
+                    <span>Credential record</span>
+                  </div>
                   </div>
                 </TiltCard>
               </Reveal>

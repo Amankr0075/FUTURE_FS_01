@@ -201,15 +201,7 @@ const Contact = () => {
               ))}
 
               {/* Availability badge */}
-              <div style={{
-                padding: '16px',
-                background: 'rgba(67,233,123,0.08)',
-                border: '1px solid rgba(67,233,123,0.2)',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-              }}>
+              <div className="availability-card">
                 <div style={{
                   width: '10px', height: '10px',
                   background: '#43e97b',
@@ -240,6 +232,10 @@ const Contact = () => {
                 noValidate
                 aria-label="Contact form"
               >
+                <div className="contact-form-heading">
+                  <span>01</span>
+                  <div><strong>Start a conversation</strong><small>Usually replies within one working day</small></div>
+                </div>
                 {/* Hidden fields for EmailJS template */}
                 <input type="hidden" name="to_email" value="amankumar3432k@gmail.com" />
 

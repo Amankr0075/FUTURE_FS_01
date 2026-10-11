@@ -1,6 +1,20 @@
 const projects = [
   {
     id: 1,
+    name: 'Rasoi Junction — Restaurant Management',
+    description:
+      'A 5th semester college mini project for restaurant management, featuring a polished food-service experience with ordering and reservation-oriented workflows.',
+    tech: ['React.js', 'Node.js', 'MongoDB Atlas', 'ngrok'],
+    image: `${import.meta.env.BASE_URL}project-rasoi-junction.png`,
+    github: 'https://github.com/Amankr0075/rasoijunction',
+    demo: 'https://rasoijunction.vercel.app/',
+    demoLabel: 'Live Demo',
+    badge: '● Live',
+    badgeColor: 'rgba(67,233,123,0.15)',
+    badgeText: '#43e97b',
+  },
+  {
+    id: 2,
     name: 'GroupSathi',
     description:
       'A professional-grade collaborative platform designed to streamline Self Help Groups and community microfinance. Features group management, activity scheduling, member coordination, financial tracking, and real-time dashboards.',
@@ -8,13 +22,13 @@ const projects = [
     image: `${import.meta.env.BASE_URL}project-groupsathi.png`,
     github: 'https://github.com/Amankr0075/GroupSathi',
     demo: 'https://groupsathi.duckdns.org/',
-    demoLabel: 'Live Demo',
-    badge: '🟢 Live',
+    demoLabel: 'Live Demo is inaccessible',
+    badge: '🔴 Not Live',
     badgeColor: 'rgba(67,233,123,0.15)',
     badgeText: '#43e97b',
   },
   {
-    id: 2,
+    id: 3,
     name: 'AmanCart — E-Commerce Website',
     description:
       'A full-featured online shopping platform named AmanCart with product browsing, search, user authentication, shopping cart, wishlist, order management, and address management. Built with Flask and MongoDB.',
@@ -29,7 +43,7 @@ const projects = [
     note: 'This project is not deployed live. View the demo video for a walkthrough.',
   },
   {
-    id: 3,
+    id: 4,
     name: 'Personal Portfolio Website',
     description:
       'A modern, animated personal portfolio website featuring dark/light theme toggle, typing text effects, scroll-reveal animations, a working contact form, and all project/skills showcase. Built with React.js + Vite.',
@@ -43,7 +57,7 @@ const projects = [
     badgeText: '#43e97b',
   },
   {
-    id: 4,
+    id: 5,
     name: 'LeadFlow CRM — Smart Lead Management',
     description:
       'A full-stack CRM platform built for managing leads end-to-end. Features a real-time dashboard with lead analytics, conversion rate tracking, lead status pipeline, monthly growth charts, and role-based user management. Built with React.js and a modern SaaS UI.',
@@ -52,12 +66,12 @@ const projects = [
     github: 'https://github.com/Amankr0075/FUTURE_FS_02',
     demo: 'https://amankr0075.github.io/FUTURE_FS_02/',
     demoLabel: 'Live Demo',
-    badge: '🟢 Live',
+    badge: '🔴 Not Live',
     badgeColor: 'rgba(67,233,123,0.15)',
     badgeText: '#43e97b',
   },
   {
-    id: 5,
+    id: 6,
     name: 'Royal Spice — Restaurant Website',
     description:
       'A premium Indian restaurant website with an award-winning fine dining theme. Features an animated hero section, interactive menu, gallery, table reservation system, and smooth scroll navigation. Built with pure HTML, CSS & JavaScript and deployed live.',
@@ -66,7 +80,7 @@ const projects = [
     github: 'https://github.com/Amankr0075/FUTURE_FS_03',
     demo: 'https://amankr0075.github.io/FUTURE_FS_03/',
     demoLabel: 'Live Demo',
-    badge: '🟢 Live',
+    badge: '🔴 Not Live',
     badgeColor: 'rgba(67,233,123,0.15)',
     badgeText: '#43e97b',
   },
@@ -99,106 +113,92 @@ const Projects = () => {
                   style={{ height: '100%', margin: 0 }}
                   aria-label={`Project: ${project.name}`}
                 >
-                {/* ── Project Screenshot Banner ── */}
-                <div className="project-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
-                  <img
-                    src={project.image}
-                    alt={`${project.name} screenshot`}
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'top center',
-                      transition: 'transform 0.6s ease',
-                      display: 'block',
-                    }}
-                    onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
-                    onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
-                  />
+                  {/* ── Project Screenshot Banner ── */}
+                  <div className="project-image" style={{ position: 'relative', height: '220px', overflow: 'hidden' }}>
+                    <img
+                      src={project.image}
+                      alt={`${project.name} screenshot`}
+                      style={{
+                        width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', transition: 'transform 0.6s ease', display: 'block',
+                      }}
+                      onMouseOver={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                      onMouseOut={e => e.currentTarget.style.transform = 'scale(1)'}
+                    />
 
-                  {/* Gradient overlay at bottom for readability */}
-                  <div style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,15,0.85) 100%)',
-                    pointerEvents: 'none',
-                  }} />
-
-                  {/* Deployment status badge — top left */}
-                  <span style={{
-                    position: 'absolute',
-                    top: '12px',
-                    left: '12px',
-                    padding: '4px 12px',
-                    background: project.badgeColor,
-                    border: `1px solid ${project.badgeText}44`,
-                    color: project.badgeText,
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    borderRadius: '999px',
-                    backdropFilter: 'blur(8px)',
-                    letterSpacing: '0.02em',
-                  }}>
-                    {project.badge}
-                  </span>
-
-                  {/* Project number — top right */}
-                  <span className="project-number">0{project.id}</span>
-                </div>
-
-                {/* ── Project Body ── */}
-                <div className="project-body">
-                  <h3 className="project-name">{project.name}</h3>
-                  <p className="project-desc">{project.description}</p>
-
-                  {/* Not deployed notice */}
-                  {project.note && (
+                    {/* Gradient overlay at bottom for readability */}
                     <div style={{
-                      display: 'flex',
-                      alignItems: 'flex-start',
-                      gap: '8px',
-                      padding: '10px 14px',
-                      background: 'rgba(255,101,132,0.07)',
-                      border: '1px solid rgba(255,101,132,0.25)',
-                      borderRadius: '8px',
-                      marginBottom: '12px',
-                      fontSize: '0.8rem',
-                      color: '#ff8fa3',
-                      lineHeight: 1.5,
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to bottom, transparent 50%, rgba(10,10,15,0.85) 100%)',
+                      pointerEvents: 'none',
+                    }} />
+
+                    {/* Deployment status badge — top left */}
+                    <span style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      padding: '4px 12px',
+                      background: project.badgeColor,
+                      border: `1px solid ${project.badgeText}44`,
+                      color: project.badgeText,
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      borderRadius: '999px',
+                      backdropFilter: 'blur(8px)',
+                      letterSpacing: '0.02em',
                     }}>
-                      <span style={{ flexShrink: 0 }}>⚠️</span>
-                      <span>{project.note}</span>
+                      {project.badge}
+                    </span>
+
+                    {/* Project number — top right */}
+                    <span className="project-number">0{project.id}</span>
+                  </div>
+
+                  {/* ── Project Body ── */}
+                  <div className="project-body">
+                    <h3 className="project-name">{project.name}</h3>
+                    <p className="project-desc">{project.description}</p>
+
+                    {/* Not deployed notice */}
+                    {project.note && (
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '8px',
+                        padding: '10px 14px',
+                        background: 'rgba(255,101,132,0.07)',
+                        border: '1px solid rgba(255,101,132,0.25)',
+                        borderRadius: '8px',
+                        marginBottom: '12px',
+                        fontSize: '0.8rem',
+                        color: '#ff8fa3',
+                        lineHeight: 1.5,
+                      }}>
+                        <span style={{ flexShrink: 0 }}>⚠️</span>
+                        <span>{project.note}</span>
+                      </div>
+                    )}
+
+                    <div className="project-tech">
+                      {project.tech.map((t) => (
+                        <span className="tech-badge" key={t}>{t}</span>
+                      ))}
                     </div>
-                  )}
 
-                  <div className="project-tech">
-                    {project.tech.map((t) => (
-                      <span className="tech-badge" key={t}>{t}</span>
-                    ))}
-                  </div>
-
-                  <div className="project-actions">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-secondary btn-sm"
-                      id={`project-${project.id}-github`}
-                      aria-label={`View ${project.name} on GitHub`}
-                    >
-                      <span>🐙</span> GitHub
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary btn-sm"
-                      id={`project-${project.id}-demo`}
-                      aria-label={`${project.demoLabel} of ${project.name}`}
-                    >
-                      <span>{project.demoLabel.includes('Video') ? '🎬' : project.demoLabel.includes('LinkedIn') ? '💼' : '🚀'}</span> {project.demoLabel}
-                    </a>
-                  </div>
+                    <div className="project-actions">
+                      {project.github && <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-secondary btn-sm" id={`project-${project.id}-github`} aria-label={`View ${project.name} on GitHub`}><span>🐙</span> GitHub</a>}
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary btn-sm"
+                        id={`project-${project.id}-demo`}
+                        aria-label={`${project.demoLabel} of ${project.name}`}
+                      >
+                        <span>{project.demoLabel.includes('Video') ? '🎬' : project.demoLabel.includes('LinkedIn') ? '💼' : '🚀'}</span> {project.demoLabel}
+                      </a>
+                    </div>
                   </div>
                 </article>
               </TiltCard>
